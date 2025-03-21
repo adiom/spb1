@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 247, 244;
+  --background-end-rgb: 238, 235, 230;
+  --primary-color: 18, 67, 106;
+  --accent-color: 176, 124, 52;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
+  }
+  
+  body {
+    font-family: var(--font-inter);
+  }
+}
+
+@layer components {
+  .hero-text {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    font-family: var(--font-playfair);
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6;
+    font-family: var(--font-playfair);
+  }
+  
+  .subsection-title {
+    @apply text-2xl md:text-3xl font-bold mb-4;
+    font-family: var(--font-playfair);
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300;
+  }
+  
+  .card:hover {
+    @apply shadow-lg;
+    transform: translateY(-2px);
+  }
+  
+  .btn-primary {
+    @apply px-4 py-2 rounded-md bg-blue-800 text-white font-medium hover:bg-blue-900 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 rounded-md border border-blue-700 text-blue-700 font-medium hover:bg-blue-50 transition-colors;
+  }
+  
+  .navbar {
+    @apply sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm;
+  }
+  
+  .timeline-item {
+    @apply relative pl-8 pb-8 border-l-2 border-blue-700;
+  }
+  
+  .timeline-dot {
+    @apply absolute -left-[9px] w-4 h-4 rounded-full bg-blue-700;
+  }
+}
